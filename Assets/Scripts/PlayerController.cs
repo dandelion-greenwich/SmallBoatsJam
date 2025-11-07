@@ -23,6 +23,8 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        Debug.Log($"Player: {playerType} Velocity: {rb.linearVelocity}");
+        
         moveInput = 0f;
         rotateInput = 0f;
         
@@ -58,5 +60,11 @@ public class PlayerController : MonoBehaviour
     public String GetPlayerName()
     {
         return playerType.ToString();
+    }
+
+    public bool IsMoving()
+    {
+        if (moveInput == 0f && rotateInput == 0f) return false;
+        return true;
     }
 }

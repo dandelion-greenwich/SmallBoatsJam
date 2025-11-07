@@ -52,7 +52,10 @@ public class HealthSystem : MonoBehaviour
         Debug.Log($"Collided gameobject name: {other.gameObject.name}");
         if (other.gameObject.CompareTag("Hit") )
         {
-            TakeDamage();
+            PlayerController playerController = other.
+                gameObject.GetComponentInParent<PlayerController>();
+            if (playerController != null && playerController.IsMoving())
+                TakeDamage();
         }
     }
     
