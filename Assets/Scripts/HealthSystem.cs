@@ -7,6 +7,7 @@ public class HealthSystem : MonoBehaviour
 {
     [SerializeField] private int health;
     [SerializeField] private int maxHealth = 5;
+    private bool isImmortal = false;
     
     [SerializeField] private GameObject boomImage;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -24,11 +25,15 @@ public class HealthSystem : MonoBehaviour
 
     public void TakeDamage()
     {
+        if (isImmortal) return;
+        
         Debug.Log("Take damage");
         health--;
         Mathf.Clamp(health, 0f, 5f); // For some reason it doesn't clamp the value, moving forward...
         boomImage.SetActive(true);
+        isImmortal = true;
         StartCoroutine(WaitForBoom());
+        StartCoroutine(WaitForMortality());
 
         if (health <= 0)
         {
@@ -53,7 +58,12 @@ public class HealthSystem : MonoBehaviour
     
     private IEnumerator WaitForBoom()
     {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(1.5f);
         boomImage.SetActive(false);
+    }
+    private IEnumerator WaitForMortality()
+    {
+        yield return new WaitForSeconds(2f);
+        isImmortal = false;
     }
 }
