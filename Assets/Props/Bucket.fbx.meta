@@ -3,7 +3,12 @@ guid: b2542f0916b43c544bed2b84257493e0
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: BlueBucker
+    second: {fileID: 2100000, guid: ea438f2ecd6dd7f488ee5ceb662dd5ad, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

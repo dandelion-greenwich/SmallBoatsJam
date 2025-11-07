@@ -3,7 +3,27 @@ guid: 5c15dcea21c585549b39f7f045334c0c
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Tires
+    second: {fileID: 2100000, guid: d8dfb6cf8783cb24e9e32194bdad37a1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: TruckBody2
+    second: {fileID: 2100000, guid: 123b40449c29a6648b31455231f70c75, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: TruckOverhead2
+    second: {fileID: 2100000, guid: c226ffc86bf23b44f99135f3ebf5d5fe, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: TruckWindow
+    second: {fileID: 2100000, guid: a111e81c458895e45908cebd1ed72db0, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

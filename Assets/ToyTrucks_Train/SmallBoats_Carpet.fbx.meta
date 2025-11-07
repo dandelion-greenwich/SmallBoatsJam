@@ -5,10 +5,15 @@ ModelImporter:
   internalIDToNameTable: []
   externalObjects:
   - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material
+    second: {fileID: 2100000, guid: 5671e6747c6175c40a3ab15b59b0f578, type: 2}
+  - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: Carpet Texture
-    second: {fileID: 2800000, guid: 1ec26efe02850de46a31205c541fd9e7, type: 3}
+    second: {fileID: 2800000, guid: 91e3bb0ee4800c9428f06ecfbda5461b, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0
