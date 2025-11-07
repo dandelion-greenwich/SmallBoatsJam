@@ -3,7 +3,22 @@ guid: 7406ab0e67b91534688ee4b1aca62674
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Tires
+    second: {fileID: 2100000, guid: ae8b9258a8d7e274f8817a1c4374e28a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: TrainBody
+    second: {fileID: 2100000, guid: 2af73562045d7c244ad3df1836ef1bb9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: TrainConnect
+    second: {fileID: 2100000, guid: 55163b2542b075d49be29cd9cf0fd417, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
