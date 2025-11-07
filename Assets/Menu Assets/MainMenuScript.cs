@@ -13,4 +13,16 @@ public class MainMenuScript : MonoBehaviour
         Application.Quit();
 
     }
+
+    public void BoatSelect()
+    {
+        SceneManager.LoadScene("Boat Select");
+    }
+
+    public void Menu()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
+
+
 }
