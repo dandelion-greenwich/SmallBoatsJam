@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -6,35 +7,65 @@ public class PlayerController : MonoBehaviour
     
     [SerializeField] private float playerSpeed;
     [SerializeField] private float playerRotationSpeed;
-    private CharacterController controller;
+    private enum PlayerType {Player1, Player2};
+    [SerializeField] private PlayerType playerType; 
     
-    [Header("Input Actions")]
-    public InputActionReference moveAction;
-    public InputActionReference rotateAction;
+    private CharacterController controller;
+    private PlayerInput playerInput;
+    private InputAction moveAction;
+    private InputAction rotateAction;
+    
+    private float moveInput;
+    private float rotateInput;
+    
 
     private void Awake()
     {
         controller = gameObject.GetComponent<CharacterController>();
+        playerInput = gameObject.GetComponent<PlayerInput>();
     }
 
-    private void OnEnable()
+    private void Start()
     {
-        moveAction.action.Enable();
+        moveAction = playerInput.actions["Movement"];
+        rotateAction = playerInput.actions["Rotate"];
     }
 
-    private void OnDisable()
+    private void Update()
     {
-        moveAction.action.Disable();
-    }
-
-    void Update()
-    {
-        float moveInput = moveAction.action.ReadValue<float>();
+        moveInput = 0;
+        rotateInput = 0;
+        switch (playerType)
+        {
+            case PlayerType.Player1:
+                if (Input.GetKey(KeyCode.W))
+                    moveInput = 1f;
+                else if (Input.GetKey(KeyCode.S))
+                    moveInput = -1f;
+                if (Input.GetKey(KeyCode.A))
+                    rotateInput = -1f;
+                else if (Input.GetKey(KeyCode.D))
+                    rotateInput = 1f;
+                break;
+            
+            case PlayerType.Player2:
+                if (Input.GetKey(KeyCode.UpArrow))
+                    moveInput = 1f;
+                else if (Input.GetKey(KeyCode.DownArrow))
+                    moveInput = -1f;
+                if (Input.GetKey(KeyCode.LeftArrow))
+                    rotateInput = -1f;
+                else if (Input.GetKey(KeyCode.RightArrow))
+                    rotateInput = 1f;
+                break;
+        }
+        
+        Debug.Log($"Move: {moveInput}, Rotate: {rotateInput}");
+        
         Vector3 move = transform.forward * moveInput;
         controller.Move(move * playerSpeed * Time.deltaTime);
-        
-        float rotateInput = rotateAction.action.ReadValue<float>();
-        // Apparently cc doesn't handle rotation so I change it with transform  
+
+        // Apply rotation
         transform.Rotate(Vector3.up * rotateInput * playerRotationSpeed * Time.deltaTime);
     }
 }
