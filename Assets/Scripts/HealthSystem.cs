@@ -1,14 +1,19 @@
 using System;
+using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class HealthSystem : MonoBehaviour
 {
     [SerializeField] private int health;
     [SerializeField] private int maxHealth = 5;
+    
+    [SerializeField] private GameObject boomImage;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        health = maxHealth;   
+        health = maxHealth;
+        boomImage.SetActive(false);
     }
 
     // Update is called once per frame
@@ -22,6 +27,8 @@ public class HealthSystem : MonoBehaviour
         Debug.Log("Take damage");
         health--;
         Mathf.Clamp(health, 0f, 5f); // For some reason it doesn't clamp the value, moving forward...
+        boomImage.SetActive(true);
+        StartCoroutine(WaitForBoom());
 
         if (health <= 0)
         {
@@ -42,5 +49,11 @@ public class HealthSystem : MonoBehaviour
         {
             TakeDamage();
         }
+    }
+    
+    private IEnumerator WaitForBoom()
+    {
+        yield return new WaitForSeconds(3f);
+        boomImage.SetActive(false);
     }
 }

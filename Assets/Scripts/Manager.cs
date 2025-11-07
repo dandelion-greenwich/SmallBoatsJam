@@ -1,11 +1,13 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class Manager : MonoBehaviour
 {
 
-    public Transform spawnPointPlayer1;
-    public Transform spawnPointPlayer2;
+    [SerializeField] private Transform spawnPointPlayer1;
+    [SerializeField] private Transform spawnPointPlayer2;
+    [SerializeField] private TextMeshProUGUI textMesh;
     
     public static Manager Instance { get; private set; }
 
@@ -32,6 +34,10 @@ public class Manager : MonoBehaviour
         Debug.Log("Game Over");
         Debug.Log($"Winning player: {winningPlayer}");
         Time.timeScale = 0;
+        if (textMesh != null)
+        {
+            textMesh.text = winningPlayer+ " has won!";
+        }
     }
     
 
